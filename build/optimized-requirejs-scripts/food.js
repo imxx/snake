@@ -1,0 +1,1 @@
+define(["settings"],function(o){function d(o,d){return Math.floor(Math.random()*(d-o))+o}var t={x:0,y:0,recreateFood:function(){this.x=d(4*o.foodRadius,o.board.width-4*o.foodRadius),this.y=d(4*o.foodRadius,o.board.height-4*o.foodRadius)}};return t});

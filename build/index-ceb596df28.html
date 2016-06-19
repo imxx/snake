@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Snake</title>
+    <link rel="stylesheet" href="/styles/main-317a8cec27.css">
+</head>
+<body>
+    <div class="main">
+        <div class="top-bar">
+            <div class="score-bar">
+                <span>Score: </span><span class="score" data-bind="text: score"></span>
+            </div>
+            <div class="high-score-bar" class="hidden">
+                <span>Highscore: </span><span class="score" data-bind="text: highScore"></span>
+            </div>
+        </div>
+
+        <canvas class="game-board" data-bind="pointerTracker: needToTrack"></canvas>
+
+        <div class="modal" data-bind="{css: { 'hidden': isGamePlay }}">
+            <h2>
+                <span data-bind="{css: { 'hidden': isGameEnd }}">Start a new game</span>
+                <span data-bind="{css: { 'hidden': !isGameEnd() }}">Game Over</span>
+            </h2>
+            <button type="button" class="start-game-button" data-bind="startGame">
+                <span data-bind="{css: { 'hidden': isGameEnd }}">New Game</span>
+                <span data-bind="{css: { 'hidden': !isGameEnd() }}">Retry</span>
+            </button>
+        </div>
+    
+        <div class="modal settings" data-bind="{ css: { 'hidden': !showSettings() }} ">
+            <h2>Settings</h2>
+            <div class="cross" title="close"
+                 data-bind="click: toggleShowSettings">
+            </div>
+            <div class="setting">
+                <label>
+                    <span>Speed: </span><span data-bind="text: speed"></span>
+                </label>
+                <input type="range" min="3" max="30" data-bind="value: speed, valueUpdate: 'input'"/>
+            </div>
+            <div class="setting">
+                <label>
+                    <span>Cell Radius: </span><span data-bind="text: cellRadius"></span>
+                </label>
+                <input type="range" min="10" max="40" data-bind="value: cellRadius, valueUpdate: 'input'"/>
+            </div>
+            <div class="setting">
+                <label>
+                    <span>Food Radius: </span><span data-bind="text: foodRadius"></span>
+                </label>
+                <input type="range" min="5" max="40" data-bind="value: foodRadius, valueUpdate: 'input'"/>
+            </div>
+            <button type="button" class="save-button" data-bind="click: toggleShowSettings">Save</button>
+            <button type="button" class="defaults-button" data-bind="click: setDefaults">Set Defaults</button>
+        </div>
+
+        <div class="settings-icon"
+             data-bind="{ click: toggleShowSettings,
+                          css: {'hidden': isGamePlay}
+                        }"
+             title="settings">
+        </div>
+
+    </div>
+
+    <div data-bind="visible: false">Loading...</div>
+    <script src="/scripts/require-5a25cd3d1c.js"></script>
+    <script src="/scripts/main.js"></script>
+</body>
+</html>
